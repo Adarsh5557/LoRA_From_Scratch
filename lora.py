@@ -160,8 +160,8 @@ class LoRAParamertrization(nn.Module):
     self.device = device
 
     self.lora_A = nn.Parameter(torch.randn(rank,feature_out,device=device))
-    self.lora_B = nn.Parameter(torch.randn(feature_in,rank,device=device))
-    nn.init.normal_(self.lora_A, mean=0, std=1)
+    self.lora_B = nn.Parameter(torch.zeros(feature_in,rank,device=device))
+    
 
     self.scale = self.alpha/self.rank
     self.enabled = True
